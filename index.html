@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Figma Website</title>
+     <style>
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white; /* change background if you want */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      position: relative;
+      transform: rotateZ(45deg);
+      perspective: 1000px;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      color: black;
+    }
+
+    .loader:before,
+    .loader:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      transform: rotateX(70deg);
+      animation: 1s spin linear infinite;
+    }
+
+    .loader:after {
+      color: rgb(42, 207, 42);
+      transform: rotateY(70deg);
+      animation-delay: .4s;
+    }
+
+    @keyframes spin {
+      0%, 100% { box-shadow: .2em 0px 0 0px currentcolor; }
+      12% { box-shadow: .2em .2em 0 0 currentcolor; }
+      25% { box-shadow: 0 .2em 0 0px currentcolor; }
+      37% { box-shadow: -.2em .2em 0 0 currentcolor; }
+      50% { box-shadow: -.2em 0 0 0 currentcolor; }
+      62% { box-shadow: -.2em -.2em 0 0 currentcolor; }
+      75% { box-shadow: 0px -.2em 0 0 currentcolor; }
+      87% { box-shadow: .2em -.2em 0 0 currentcolor; }
+    }
+  </style>
+       
+  
+
+</head>
+<body>
+    <div class="preloader">
+    <div class="loader"></div>
+  </div>
+
+
+<section class="mx-auto px-5 md:px-10">
+  <div class="section">
+
+    <div class="head flex flex-wrap items-center justify-between py-5 relative">
+
+      <div class="heading flex items-center">
+        <ion-icon class="bg-green-500 text-white rounded-full p-1 text-2xl md:text-3xl" name="planet-outline"></ion-icon>
+        <h1 class="ml-2 text-xl md:text-2xl font-medium">Gamecent</h1>
+      </div>
+
+      <button id="menu-btn" class="block md:hidden text-3xl text-green-500 focus:outline-none">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav id="menu" class="hidden md:block absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none z-50">
+        <ul class="flex flex-col md:flex-row gap-6 md:gap-10 p-5 md:p-0 text-black text-sm font-normal text-center">
+          <li><a class="hover:text-green-500" href="#">Home</a></li>
+          <li><a class="hover:text-green-500" href="#">Features</a></li>
+          <li><a class="hover:text-green-500" href="#">Community</a></li>
+          <li><a class="hover:text-green-500" href="#">Blog</a></li>
+          <li><a class="hover:text-green-500" href="#">Contact</a></li>
+          <li class="md:hidden">
+            <a class="block text-white bg-green-500 px-4 py-2 rounded-lg hover:bg-white hover:border hover:border-green-500 hover:text-green-500 transition" href="#">Register Now</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="register hidden md:block">
+        <a class="text-white transition ease-in-out delay-150 bg-green-500 border border-transparent px-4 py-2 rounded-lg hover:-translate-y-1 hover:scale-105 hover:text-green-500 hover:border-green-500 hover:bg-white duration-300" href="form.html">
+          Register Now <ion-icon name="arrow-forward-outline"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+    <div class="lesson flex flex-col-reverse md:flex-row items-center justify-between bg-slate-100 py-12 md:py-20 px-5">
+
+      <div class="head-lesson md:ml-10 md:mt-0 mt-8 text-center md:text-left">
+        <h1 class="text-3xl md:text-5xl font-bold text-neutral-600 leading-tight">
+          Achievements and insights <br />
+          <span class="text-green-500">from 8 years</span>
+        </h1>
+        <p class="mt-4 text-neutral-600 font-medium">
+          Where to grow yourself as a sport expert: site or social media?
+        </p>
+      </div>
+
+      <div class="head-image">
+        <img class="w-full max-w-sm md:max-w-lg" src="banner-71639ab7.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="clients text-center mt-12 px-5">
+    <h1 class="text-neutral-600 text-2xl md:text-3xl font-bold">Our clients</h1>
+    <p class="text-base text-neutral-400">We have been working with some Fortune 500+ clients</p>
+
+    <div class="client-logos mt-7 text-2xl md:text-3xl flex flex-wrap justify-center gap-10">
+      <ion-icon class="text-green-500" name="logo-xbox"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-stackoverflow"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-react"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-alipay"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-react"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-octocat"></ion-icon>
+      <ion-icon class="text-green-500" name="logo-reddit"></ion-icon>
+    </div>
+
+    <div class="manage-client mt-12 grid justify-center">
+      <h2 class="text-neutral-600 text-xl md:text-2xl font-bold text-center">
+        Manage your entire community <br /> in a single system
+      </h2>
+      <p class="text-neutral-400 text-center text-sm mt-2">Who is Gamecent suitable for?</p>
+
+      <div class="mamage-logo flex flex-col md:flex-row mt-10 gap-8 md:gap-12 lg:gap-20 px-5">
+        
+        <div class="logo-1 border border-green-500 rounded-xl p-6 flex-1 text-center">
+          <ion-icon class="text-green-500 text-3xl mb-3" name="stats-chart-outline"></ion-icon>
+          <h2 class="text-green-500 font-bold text-xl md:text-2xl">Business Owners</h2>
+          <p class="mb-6 text-sm">Business owners can collaborate with us to promote their products</p>
+          <a class="text-white border border-transparent hover:border-green-500 hover:bg-white hover:text-green-500 rounded-lg bg-green-500 px-4 py-2 inline-block" href="#">View More</a>
+        </div>
+
+        <div class="logo-2 border border-green-500 rounded-xl p-6 flex-1 text-center">
+          <ion-icon class="text-green-500 text-3xl mb-3" name="prism-outline"></ion-icon>
+          <h2 class="text-green-500 font-bold text-xl md:text-2xl">Gamers</h2>
+          <p class="mb-6 text-sm">Gamers who love enjoying their day with real interface games</p>
+          <a class="text-white border border-transparent hover:border-green-500 hover:bg-white hover:text-green-500 rounded-lg bg-green-500 px-4 py-2 inline-block" href="#">View More</a>
+        </div>
+
+        <div class="logo-3 border border-green-500 rounded-xl p-6 flex-1 text-center">
+          <ion-icon class="text-green-500 text-3xl mb-3" name="storefront-outline"></ion-icon>
+          <h2 class="text-green-500 font-bold text-xl md:text-2xl">Family</h2>
+          <p class="mb-6 text-sm">Families get to share exciting moments together</p>
+          <a class="text-white border border-transparent hover:border-green-500 hover:bg-white hover:text-green-500 rounded-lg bg-green-500 px-4 py-2 inline-block" href="#">View More</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  
+<div class="flex flex-col md:flex-row items-center md:items-start ml-4 md:ml-40 mt-10 gap-10">
+  <img class="w-full max-w-xs md:max-w-sm" src="images (1).jpg" alt="">
+
+  <div class="mt-6 md:mt-20 md:ml-10 text-center md:text-left">
+    <h1 class="text-2xl md:text-4xl font-bold tracking-tight text-neutral-600 mb-3">
+      The unseen of spending three <br class="hidden md:block" /> years at Pixelgrade
+    </h1>
+    <p class="text-sm md:text-base text-neutral-400 font-medium mb-5">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br class="hidden md:block" />
+      Quae dolorem quas consequatur vero officia quod alias <br class="hidden md:block" />
+      adipisci esse nulla quidem asperiores! Lorem ipsum dol.
+    </p>
+    <a class="inline-block text-white border border-transparent hover:border-green-500 hover:bg-white hover:text-green-500 rounded-lg bg-green-500 px-7 py-3 font-semibold transition duration-300" href="#">
+      Learn more
+    </a>
+  </div>
+</div>
+
+<div class="bg-slate-100 flex flex-col lg:flex-row justify-between items-start gap-10 px-6 md:px-20 py-20">
+
+  <div class="helphead">
+    <h1 class="text-neutral-600 font-bold text-2xl md:text-3xl mb-2">
+      Helping a local <br />
+      <span class="text-green-500">business reinvent itself</span>
+    </h1>
+    <p class="text-neutral-400 text-sm md:text-base font-normal">
+      Our motive ends into our hard work communication
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-10">
+    <div class="flex flex-col sm:flex-row gap-10">
+      <div class="flex items-start gap-3">
+        <ion-icon class="text-green-500 text-3xl" name="person-outline"></ion-icon>
+        <p class="font-bold text-xl text-neutral-600">
+          2,245,341 <br />
+          <span class="text-xs">members</span>
+        </p>
+      </div>
+      <div class="flex items-start gap-3">
+        <ion-icon class="text-green-500 text-3xl" name="location-outline"></ion-icon>
+        <p class="font-bold text-xl text-neutral-600">
+          46,328 <br />
+          <span class="text-xs">cities</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-10">
+      <div class="flex items-start gap-3">
+        <ion-icon class="text-green-500 text-3xl" name="aperture-outline"></ion-icon>
+        <p class="font-bold text-xl text-neutral-600">
+          928,867 <br />
+          <span class="text-xs">ship bookings</span>
+        </p>
+      </div>
+      <div class="flex items-start gap-3">
+        <ion-icon class="text-green-500 text-3xl" name="wallet-outline"></ion-icon>
+        <p class="font-bold text-xl text-neutral-600">
+          1,926,436 <br />
+          <span class="text-xs">purchase</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col md:flex-row items-center md:items-start ml-4 md:ml-40 mt-10 gap-10">
+  <img class="w-full max-w-xs md:max-w-sm" src="images (2).jpg" alt="">
+
+  <div class="mt-6 md:mt-20 md:ml-10 text-center md:text-left">
+    <h1 class="text-2xl md:text-4xl font-bold tracking-tight text-neutral-600 mb-3">
+      How to design your site footer like <br class="hidden md:block" /> we did
+    </h1>
+    <p class="text-sm md:text-base text-neutral-400 font-medium mb-5">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur ab ea minima adipisci, ut cons <br class="hidden md:block" />
+      dolorem debitis rerum id consequuntur modi! Optio laborum vel delectus id vitae exercitatione <br class="hidden md:block" />
+      magnam obcaecati fugit quaerat tempore asperiores quae aperiam voluptates ex, omnis atque!
+    </p>
+    <a class="inline-block text-white border border-transparent hover:border-green-500 hover:bg-white hover:text-green-500 rounded-lg bg-green-500 px-7 py-3 font-semibold transition duration-300" href="#">
+      Learn more
+    </a>
+  </div>
+</div>
+
+<div class="bg-white py-24 sm:py-32">
+  <div class="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div class="max-w-xl">
+      <h2 class="text-3xl font-semibold tracking-tight text-pretty text-green-500 sm:text-4xl">Meet our leadership</h2>
+      <p class="mt-6 text-lg/8 text-gray-600">We're a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.</p>
+    </div>
+    <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Leslie Alexander</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Co-Founder / CEO</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Michael Foster</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Co-Founder / CTO</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Dries Vincent</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Business Relations</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Lindsay Walton</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Front-end Developer</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Courtney Henry</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Designer</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-x-6">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5" />
+          <div>
+            <h3 class="text-base/7 font-semibold tracking-tight text-green-500">Tom Cook</h3>
+            <p class="text-sm/6 font-semibold text-green-500">Director of Product</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="faq flex flex-col lg:flex-row p-6 md:p-10 bg-slate-100 gap-8 lg:justify-between">
+  
+  <div class="headfaq lg:w-1/2 mt-4 lg:mt-10">
+    <h1 class="text-2xl md:text-4xl font-bold text-neutral-600 mb-3">
+      Frequently asked questions
+    </h1>
+    <p class="text-sm md:text-base text-neutral-600">
+      Can't find the answer you're looking for? Reach out to our <br class="hidden md:block" />
+      <a class="text-indigo-500 hover:underline" href="#">customer support</a> team.
+    </p>
+  </div>
+
+  <div class="faqbody lg:w-1/2 mt-6 lg:mt-12 space-y-6">
+    <dl>
+      <dt class="text-lg md:text-xl font-medium text-neutral-800">
+        How do you make a purchase?
+      </dt>
+      <dd class="text-neutral-600 text-sm md:text-base mt-1">
+        You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Quas cupiditate laboriosam fugiat.
+      </dd>
+    </dl>
+
+    <dl>
+      <dt class="text-lg md:text-xl font-medium text-neutral-800">
+        What's the best thing about Switzerland?
+      </dt>
+      <dd class="text-neutral-600 text-sm md:text-base mt-1">
+        I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Quas cupiditate laboriosam fugiat.
+      </dd>
+    </dl>
+
+    <dl>
+      <dt class="text-lg md:text-xl font-medium text-neutral-800">
+        What do you call someone with no body and no nose?
+      </dt>
+      <dd class="text-neutral-600 text-sm md:text-base mt-1">
+        Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas iditate
+        laboriosam fugiat.
+      </dd>
+    </dl>
+
+    <dl>
+      <dt class="text-lg md:text-xl font-medium text-neutral-800">
+        Why do you never see elephants hiding in trees?
+      </dt>
+      <dd class="text-neutral-600 text-sm md:text-base mt-1">
+        Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Quas cupiditate laboriosam fugiat.
+      </dd>
+    </dl>
+  </div>
+</div>
+
+
+<footer>
+
+    <footer class="bg-[#263238] text-white pt-10 pb-6">
+  
+  <div class=" flex justify-center mb-10">
+        <ion-icon class="bg-green-500 text-white rounded-full p-1 text-2xl md:text-3xl" name="planet-outline"></ion-icon>
+        <h1 class="ml-2 text-xl md:text-2xl font-medium">Gamecent</h1>
+  </div>
+
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-6 md:px-16 lg:px-32 text-sm">
+    
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">OUR SERVICES</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Ocean freight</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Air freight</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Land Transport</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Consultancy</a></li>
+      </ul>
+    </div>
+
+    
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">COMPANY</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">About us</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Expertise</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Sustainability</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">News and Media</a></li>
+      </ul>
+    </div>
+
+    
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">QUICK LINKS</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Transport shipment</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Warehouse logistics</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Global agent networks</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">FAQ</a></li>
+      </ul>
+    </div>
+
+    
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">HELP CENTER</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Contact</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Login & Account</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Track shipping</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Refund policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="mt-10 text-center text-xs text-gray-400">
+    <p>© 2025 GLOBAL LOGISTICS. All rights reserved.</p>
+  </div>
+
+</footer>
+
+
+</footer>
+
+
+</section>
+
+
+<script>
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      document.querySelector(".preloader").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }, 2000); 
+  });
+</script>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
