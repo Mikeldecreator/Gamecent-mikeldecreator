@@ -5,7 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Our Features</title>
-   <!-- <style>
+
+    
+ <style>
+    @keyframes leftFade {
+      0%   { transform: translateX(-120%); opacity: 0; }
+      8%   { transform: translateX(0);      opacity: 1; }
+      25%  { transform: translateX(0);      opacity: 1; }
+      35%  { transform: translateX(0);      opacity: 0; } 
+      100% { transform: translateX(0);      opacity: 0; }
+    }
+
+    .anim {
+      animation: leftFade 12s ease-in-out infinite both;
+      will-change: transform, opacity;
+    }
+
+    .b1 h2 { animation-delay: 0s;   }
+    .b1 p  { animation-delay: 0.6s; }
+
+    .b2 h2 { animation-delay: 4s;   }
+    .b2 p  { animation-delay: 4.6s; }
+
+    .b3 h2 { animation-delay: 8s;   }
+    .b3 p  { animation-delay: 8.6s; }
+
+    
+    @keyframes slideInRight {
+      0%   { transform: translateX(120%); opacity: 0; }
+      100% { transform: translateX(0);   opacity: 1; }
+    }
+
+    .image-anim {
+      animation: slideInRight 1.2s ease-out forwards;
+    }
+
+
+   
     .preloader {
       position: fixed;
       top: 0;
@@ -59,7 +95,7 @@
       75% { box-shadow: 0px -.2em 0 0 currentcolor; }
       87% { box-shadow: .2em -.2em 0 0 currentcolor; }
     }
-  </style>  -->
+  </style> 
 
 </head>
 <body>
@@ -67,7 +103,8 @@
       <div class="loader"></div>
   </div>
      
-     <section class="mx-auto px-5 md:px-10">
+<section class="mx-auto mt-3 px-5 md:px-10">
+
   <div class="head flex flex-wrap items-center justify-between py-5 relative">
     <div class="heading flex items-center">
       <ion-icon class="bg-green-500 text-white rounded-full p-1 text-2xl md:text-3xl"
@@ -75,7 +112,6 @@
       <h1 class="ml-2 text-xl md:text-2xl font-medium">Gamecent</h1>
     </div>
 
-   
     <button id="menu-btn" class="block md:hidden text-3xl text-green-500 focus:outline-none">
       <ion-icon name="menu-outline"></ion-icon>
     </button>
@@ -92,13 +128,187 @@
       </ul>
     </nav>
   </div>
+</section>
+
+<section class="flex flex-col md:flex-row items-center justify-between px-5 md:px-10 mt-5">
+
+  <div class="relative w-full md:w-1/2 h-56 md:h-64 overflow-hidden mb-6 md:mb-0">
+  
+    <div class="b1 absolute left-0 top-0">
+      <h2 class="anim text-2xl md:text-3xl font-bold leading-tight text-green-500 mb-2">
+        Ultimate Destination for Gaming News <br> Review and Community
+      </h2>
+      <p class="anim text-sm md:text-base leading-relaxed">
+        Get the latest game news, expert reviews, and join passionate <br>
+        community. GameCenter has everything you need to stay on <br>
+        top of your gaming world.
+      </p>
+    </div>
+
+    <div class="b2 absolute left-0 top-0">
+      <h2 class="anim text-2xl md:text-3xl font-bold leading-tight text-green-500 mb-2">
+        Unlock Full Potential on Your Gaming <br> Journey with Expert Insights
+      </h2>
+      <p class="anim text-sm md:text-base leading-relaxed">
+        Discover new releases, hidden gems, and pro tips. GameCenter <br>
+        guides you with insightful reviews and a community <br>
+        that shares your passion.
+      </p>
+    </div>
+
+    <div class="b3 absolute left-0 top-0">
+      <h2 class="anim text-2xl md:text-3xl font-bold leading-tight text-green-500 mb-2">
+        Step Into the Future of Gaming with <br> Latest Reviews, and Events
+      </h2>
+      <p class="anim text-sm md:text-base leading-relaxed">
+        Stay ahead of the curve with exclusive updates, event cover <br>
+        age and reviews. GameCenter is your go-to hub for all <br>
+        things gaming.
+      </p>
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 flex justify-center">
+    <img src="Untitled_design__2_-removebg-preview.png" 
+         alt="Intro Image" 
+         class="image-anim max-w-xs md:max-w-md lg:max-w-lg object-contain">
+  </div>
+</section>
 
 
+   
 
 
+           <section class="mt-40">
+                         <div class="bg-slate-100 py-24 sm:py-32">
+                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                                <div class="mx-auto max-w-2xl lg:text-center">
+                                <h2 class="mt-2 text-4xl font-bold tracking-tight text-pretty sm:text-5xl text-green-500 lg:text-balance">How it works</h2>
+                                <p class="mt-6 text-sm">Our bootcamp follows a step-by-step, guided approach, breaking down complex into manageable sections, ensuring steady progress and confidence as you build your full-stack application.</p>
+                                </div>
+                                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                                <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                                    <div class="relative pl-16">
+                                    <dt class="text-lg font-bold text-slate-800">
+                                        <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-500">
+                                         <ion-icon class="size-6 text-white" name="play-circle-outline"></ion-icon>
+                                        </div>
+                                        High Quality
+                                    </dt>
+                                    <dd class="mt-2 text-sm">The bootcamp delivers high-quality, visually engaging videos, with animations and clear explanations, perfect for visual learners.</dd>
+                                    </div>
+
+                                    <div class="relative pl-16">
+                                    <dt class="font-bold text-slate-800">
+                                        <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg  bg-green-500">
+                                         <ion-icon class="size-6 text-white" name="search-outline"></ion-icon>
+                                        </div>
+                                        Detailed
+                                    </dt>
+                                    <dd class="mt-2 text-sm">Every concept is taught in comprehensive detail, ensuring students understand thoroughly, with no confusion left behind.</dd>
+                                    </div>
+                                    <div class="relative pl-16">
+                                    <dt class="font-bold text-slate-800">
+                                        <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg  bg-green-500">
+                                        <ion-icon class="size-6 text-white" name="list-outline"></ion-icon>
+                                        </div>
+                                        Structured
+                                    </dt>
+                                    <dd class="mt-2 text-sm">The course is structured to guide you through building a full-stack application, providing a clear, start-to-finish understanding.</dd>
+                                    </div>
+                                    <div class="relative pl-16">
+                                    <dt class="font-bold text-slate-800">
+                                        <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg  bg-green-500">
+                                        <ion-icon  class="size-6 text-white" name="document-outline"></ion-icon>
+                                        </div>
+                                        Certfied
+                                    </dt>
+                                    <dd class="mt-2 text-sm">Earn a recognized certification that validates your full-stack skills, giving you the edge and confidence to secure your dream job.</dd>
+                                    </div>
+                                </dl>
+                                </div>
+                            </div>
+                            </div>
+
+            </section>
 
 
+<section class="flex flex-col-reverse md:flex-row items-center justify-between px-4 py-16 sm:py-24 md:py-32 lg:py-40 gap-8 md:gap-12 lg:gap-16">
 
+
+  <div class="bg-teal-900 w-full md:w-1/2 rounded-lg sm:rounded-xl p-6 sm:p-8 md:p-12 lg:p-16 text-white text-center md:text-left shadow-2xl">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">
+      It's time to boost Your Game
+    </h2>
+
+    <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-6">
+      Your new future is one click away
+    </p>
+
+    <a href="blog.html"
+      class="bg-white text-teal-700 font-medium border border-teal-300 hover:bg-teal-700 hover:text-white hover:border-transparent
+      hover:shadow-2xl px-6 sm:px-8 py-2 sm:py-3 rounded-md inline-block transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+        Visit Our Blog
+    </a>
+  </div>
+
+  <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+    <img src="istockphoto-1453963970-612x612-removebg-preview.png"
+         alt="Game Illustration"
+         class="w-3/4 md:w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-contain">
+  </div>
+
+</section>
+
+<footer class="bg-[#263238] text-white pt-10 pb-6">
+  <div class="flex justify-center mb-10">
+    <ion-icon class="bg-green-500 text-white rounded-full p-1 text-2xl md:text-3xl" name="planet-outline"></ion-icon>
+    <h1 class="ml-2 text-xl md:text-2xl font-medium">Gamecent</h1>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-6 md:px-16 lg:px-32 text-sm text-center md:text-left">
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">OUR SERVICES</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Ocean freight</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Air freight</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Land Transport</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Consultancy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">COMPANY</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">About us</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Expertise</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Sustainability</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">News and Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">QUICK LINKS</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Transport shipment</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Warehouse logistics</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Global agent networks</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-semibold text-green-400 mb-3">HELP CENTER</h2>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-green-400 transition">Contact</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Login & Account</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Track shipping</a></li>
+        <li><a href="#" class="hover:text-green-400 transition">Refund policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-10 text-center text-xs text-gray-400">
+    <p>© 2025 GLOBAL LOGISTICS. All rights reserved.</p>
+  </div>
+</footer>
 
 
 
