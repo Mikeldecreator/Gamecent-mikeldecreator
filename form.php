@@ -1,3 +1,78 @@
+<?php
+  include 'include/db.php';
+   
+  if(isset($_POST['submit'])){
+     $error = array();
+  
+     if(empty($_POST['email'])){
+      $error['email'] = "Enter Email";
+  
+     }else{
+      $statement = $conn->prepare("SELECT * FROM admin WHERE email = :em");
+      $statement->bindParam(":em",$_POST['email']);
+      $statement->execute();
+
+
+          // Prepare query
+      $statement = $conn->prepare("SELECT * FROM admin WHERE email = :em");
+      $statement->bindParam(":em", $_POST['email']);
+      $statement->execute();
+
+      // Check if email exists
+      if ($statement->rowCount() === 0) {
+          $error['email'] = "Email not found, please enter a correct email.";
+      } else {
+          $record = $statement->fetch(PDO::FETCH_ASSOC);
+
+          // Verify password (assuming you store it hashed)
+          if (!password_verify($_POST['hash'], $record['hash'])) {
+              $error['hash'] = "Incorrect password";
+          } else {
+              // ✅ Email and password are correct
+              // You can start session or redirect user here
+              $_SESSION['admin'] = $record['id'];
+          }
+      }
+
+
+
+     }
+
+
+     if(empty($_POST['hash'])){
+      $error['hash'] = "Enter Password";
+
+     }
+
+     if(empty($error)){
+      $stmt = $conn->prepare("SELECT * FROM admin WHERE email = :em LIMIT 1");
+      $stmt->bindParam(":em", $_POST['email'], PDO::PARAM_STR);
+      $stmt->execute();
+      $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+       if($stmt->rowCount() > 0 &&password_verify($_POST['hash'], $record['hash'])){
+           header("Location: home.php");
+           exit();
+       }else{
+        // $error['hash'] = "Incorrect password";
+        header("Location:form.php?error=either email or password incorrect");
+       }
+
+     }
+
+    
+
+  }
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,31 +169,48 @@
 
  
     <div class="log1 w-full md:w-auto">
-      <form action="" method="post" class="flex flex-col items-center">
+      <form method="POST" class="flex flex-col items-center">
+
+      <?php if (isset($error['email'])): ?>
+      <p class="text-green-500 text-sm w-full md:w-[350px] text-left">
+        <?= $error['email']; ?>
+      </p>
+    <?php endif; ?>
+
         <input class="w-full md:w-[350px] border focus:outline-none focus:shadow-2xl focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="email" name="email" placeholder="Phone / Email">    
 
-        <input class="w-full md:w-[350px] border focus:outline-none focus:shadow-2xl focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="password" name="password" placeholder="Passcode">   
 
-       
-        <a href="home.html" 
-          class="block text-center w-full sm:w-[250px] md:w-[300px] lg:w-[350px] text-white text-sm md:text-base font-medium  hover:text-green-500 bg-green-500 hover:bg-white hover:border border-green-500 py-3 px-6 rounded-full cursor-pointer transition duration-300 ease-in-out">
-          Login to Your Account
-        </a>
+           <?php if (isset($error['hash'])): ?>
+      <p class="text-green-500 text-sm w-full md:w-[350px] text-left">
+        <?= $error['hash']; ?>
+      </p>
+    <?php endif; ?>
+        <input class="w-full md:w-[350px] border focus:outline-none focus:shadow-2xl focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="password" name="hash" placeholder="Passcode">   
+
+          <input 
+          class="block text-center w-full sm:w-[250px] md:w-[300px] lg:w-[350px] text-white text-sm md:text-base font-medium  hover:text-green-500 bg-green-500 hover:bg-white hover:border border-green-500 py-3 px-6 rounded-full cursor-pointer transition duration-300 ease-in-out" type="submit" name="submit" value="Login To Your Account">
+    
 
       </form>
     </div>
 
     <div class="log2 w-full md:w-auto mt-8 md:mt-0 md:ml-20 flex flex-col items-center md:items-start space-y-4">
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-google"></ion-icon> Sign in with Gmail
+        <ion-icon class="mr-2" name="logo-google"></ion-icon> <a href="http://gmail.com">
+          Sign in with Gmail
+        </a>
       </p>
 
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-facebook"></ion-icon> Sign in with Facebook
+        <ion-icon class="mr-2" name="logo-facebook"></ion-icon> <a href="http://www.facebook.com">
+           Sign in with Facebook
+        </a>
       </p>
 
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-apple"></ion-icon> Sign in with Apple
+        <ion-icon class="mr-2" name="logo-apple"></ion-icon> <a href="http://www.icloud.com">
+          Sign in with Apple
+        </a>
       </p>
     </div>
 

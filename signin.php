@@ -1,3 +1,87 @@
+<?php
+   include 'include/db.php';
+
+
+
+   if(isset($_POST['submit'])){
+
+    $error = array();
+ 
+    if(empty($_POST['email'])){
+      $error['email'] = "Enter Email";
+    }else{
+       $statement = $conn->prepare("SELECT * FROM admin WHERE email = :em");
+       $statement->bindParam(":em",$_POST['email']);
+       $statement->execute();
+
+
+       if($statement->rowCount() > 0){
+         $error['email'] = "Email already Exist";
+       }     
+
+    }
+
+    if(empty($_POST['hash'])){
+      $error['hash'] = "Enter Password";
+    }
+
+    if(empty($_POST['confirm_hash'])){
+      $error['confirm_hash'] = "Confirm Password";
+    }elseif($_POST['hash'] !== $_POST['confirm_hash']){
+      $error['confirm_hash'] = "Password Mismatch";
+    }
+
+
+    // if(empty($error)){
+
+    //   $encrypted = password_hash($_POST['hash'],PASSWORD_BCRYPT);
+    //   $stmt = $conn->prepare("INSERT INTO admin VALUES(NULL,:em,:hsh,NOW(),NOW()");
+    //   $data = array(
+    //      ":em" =>$_POST['email'],
+    //      ":hsh"=>$encrypted
+    //   );
+    //   $stmt->execute($data);
+    //   header("Location: form.php");
+    //   exit();
+    // }
+
+if (empty($error)) {
+    // Hash password securely
+    $encrypted = password_hash($_POST['hash'], PASSWORD_BCRYPT);
+
+    // Prepare statement with explicit column names
+    $stmt = $conn->prepare("
+        INSERT INTO admin (id, email, hash, date_created, time_created) 
+        VALUES (NULL, :em, :hsh, NOW(), NOW())
+    ");
+
+    $data = array(
+        ":em"  => $_POST['email'],
+        ":hsh" => $encrypted
+    );
+
+    $stmt->execute($data);
+
+    // Redirect after success
+    header("Location: form.php");
+    exit();
+}
+
+
+   }
+
+  
+
+
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,33 +178,69 @@
   <div class="login flex flex-col md:flex-row justify-center mt-10 px-4 md:px-0">
 
  
-    <div class="log1 w-full md:w-auto">
-      <form action="" method="post" class="flex flex-col items-center">
-        <input class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="email" name="email" placeholder="Phone / Email">    
+   <div class="log1 w-full md:w-auto px-4">
+  <form method="post" class="flex flex-col items-center space-y-3">
 
-        <input class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="password" name="password" placeholder="Passcode">   
+    <?php if (isset($error['email'])): ?>
+      <p class="text-green-500 text-sm w-full md:w-[350px] text-left">
+        <?= $error['email']; ?>
+      </p>
+    <?php endif; ?>
 
-        <input class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 mb-4 pl-4 rounded-full font-medium py-3" type="password" name="password" placeholder="confirm passcode">   
+    <input 
+      class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 pl-4 rounded-full font-medium py-3" 
+      type="email" 
+      name="email" 
+      placeholder="Phone / Email"
+    >
 
-        <a href="form.html" class="block text-center w-full sm:w-[250px] md:w-[300px] lg:w-[350px] text-white text-sm md:text-base font-medium hover:text-green-500 bg-green-500 hover:bg-white hover:border border-green-500 py-3 px-6 rounded-full cursor-pointer transition duration-300 ease-in-out">Signup Your Account
-        </a>
+    <?php if (isset($error['hash'])): ?>
+      <p class="text-green-500 text-sm w-full md:w-[350px] text-left">
+        <?= $error['hash']; ?>
+      </p>
+    <?php endif; ?>
 
+    <input 
+      class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 pl-4 rounded-full font-medium py-3" 
+      type="password" 
+      name="hash" 
+      placeholder="Passcode"
+    >
 
+    <input 
+      class="w-full md:w-[350px] border focus:outline-none focus:border-green-500 border-slate-500 pl-4 rounded-full font-medium py-3" 
+      type="password" 
+      name="confirm_hash" 
+      placeholder="Confirm Passcode"
+    >
 
-      </form>
-    </div>
+    <input 
+      type="submit" 
+      class="block w-full sm:w-[250px] md:w-[300px] lg:w-[350px] text-white text-sm md:text-base font-medium bg-green-500 hover:bg-white hover:text-green-500 hover:border border-green-500 py-3 px-6 rounded-full cursor-pointer transition duration-300 ease-in-out" 
+      value="Sign in to Your Account" 
+      name="submit"
+    >
+  </form>
+</div>
+
 
     <div class="log2 w-full md:w-auto mt-8 md:mt-0 md:ml-20 flex flex-col items-center md:items-start space-y-4">
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-google"></ion-icon> Sign in with Gmail
+        <ion-icon class="mr-2" name="logo-google"></ion-icon> <a href="http://gmail.com">
+          Sign in with Gmail
+        </a>
       </p>
 
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-facebook"></ion-icon> Sign in with Facebook
+        <ion-icon class="mr-2" name="logo-facebook"></ion-icon> <a href="http://www.facebook.com">
+           Sign in with Facebook
+        </a>
       </p>
 
       <p class="cursor-pointer w-full md:w-auto text-center text-sm text-green-500 border border-green-500 px-6 md:px-12 rounded-full py-3 hover:text-white hover:bg-green-500">
-        <ion-icon class="mr-2" name="logo-apple"></ion-icon> Sign in with Apple
+        <ion-icon class="mr-2" name="logo-apple"></ion-icon> <a href="http://www.icloud.com">
+          Sign in with Apple
+        </a>
       </p>
     </div>
 

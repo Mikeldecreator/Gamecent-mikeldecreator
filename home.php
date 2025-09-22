@@ -92,7 +92,7 @@
         <li><a class="hover:text-green-500 transition" href="community.html">Community</a></li>
         <li><a class="hover:text-green-500 transition" href="blog.html">Blog</a></li>
         <li><a class="hover:text-green-500 transition" href="contact.html">Contact</a></li>
-        <li><a class="hover:text-green-500 transition" href="form.html">Logout</a></li>
+        <li><a class="hover:text-green-500 transition" href="form.php">Logout</a></li>
       </ul>
     </nav>
   </div>
