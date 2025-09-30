@@ -153,7 +153,7 @@
     </div>
 
     <div class="get flex space-x-4 md:mr-20">
-      <a class="hover:text-green-500 font-medium mt-4 mr-2" href="signin.html">Sign In</a>
+      <a class="hover:text-green-500 font-medium mt-4 mr-2" href="signin.php">Sign In</a>
       <a class="text-white hover:text-green-500 font-semibold bg-green-500 hover:bg-white px-5 md:px-7 py-2 md:py-3 rounded-full border border-transparent hover:border-green-500" href="index.html">Get Started</a>
     </div>
 

@@ -162,8 +162,8 @@ if (empty($error)) {
       </h1>
     </div>
 
-    <div class="get flex space-x-4 md:mr-20">
-      <!-- <a class="hover:text-green-500 font-medium mt-4 mr-2" href="signin.html">Sign In</a> -->
+      <div class="get flex space-x-4 md:mr-20">
+      <a class="hover:text-green-500 font-medium mt-4 mr-2" href="form.php">Login In</a>
       <a class="text-white hover:text-green-500 font-semibold bg-green-500 hover:bg-white px-5 md:px-7 py-2 md:py-3 rounded-full border border-transparent hover:border-green-500" href="index.html">Get Started</a>
     </div>
 
@@ -246,9 +246,6 @@ if (empty($error)) {
 
   </div>
 
-  <div class="mt-6 flex justify-center px-4">
-    <p class="font-medium text-neutral-600 hover:text-green-500 cursor-pointer">Forgot Passcode?</p>
-  </div>
 
   <footer class="mt-10 px-4 md:px-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-2 md:space-y-0 pb-6">
     <a class="font-medium text-neutral-600 text-xs md:text-sm" href="#">Privacy Policy | Terms & Conditions</a>

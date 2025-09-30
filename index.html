@@ -92,19 +92,27 @@
     <li><a class="hover:text-green-500" href="#">Blog</a></li>
     <li><a class="hover:text-green-500" href="#">Contact</a></li>
   
-    <!-- Mobile button (below 768px) -->
-    <li class="md:hidden">
-      <a class="block text-white bg-green-500 px-4 py-2 rounded-lg hover:bg-white hover:border hover:border-green-500 hover:text-green-500 transition" href="form.php">
-        Register Now
-      </a>
-    </li>
+<!-- Mobile button (visible below 768px) -->
+<li class="md:hidden">
+  <button 
+    onclick="window.location.href='form.php'" 
+    class="block w-full text-white bg-green-500 px-4 py-2 rounded-lg hover:bg-white hover:border hover:border-green-500 hover:text-green-500 transition"
+  >
+    Register Now
+  </button>
+</li>
 
-    <!-- Desktop button (768px and up, aligned in nav) -->
-    <li class="hidden md:block">
-      <a class="text-white bg-green-500 border border-transparent px-4 py-2 rounded-lg transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:text-green-500 hover:border-green-500 hover:bg-white duration-300" href="form.php">
-        Register Now <ion-icon name="arrow-forward-outline"></ion-icon>
-      </a>
-    </li>
+<!-- Desktop button (visible from 768px and up) -->
+<li class="hidden md:block">
+  <button 
+    onclick="window.location.href='form.php'" 
+    class="text-white bg-green-500 border border-transparent px-4 py-2 rounded-lg transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:text-green-500 hover:border-green-500 hover:bg-white duration-300 flex items-center gap-2"
+  >
+    Register Now 
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </button>
+</li>
+
   </ul>
 </nav>
 
